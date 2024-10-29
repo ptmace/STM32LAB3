@@ -19,6 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "software_timer.h"
@@ -97,10 +98,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  if(timer_flag[0] == 1){
-		  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
-		  setTimer(0, 50);
-	  }
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -219,6 +217,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : BTN_0_Pin BTN_1_Pin BTN_2_Pin */
+  GPIO_InitStruct.Pin = BTN_0_Pin|BTN_1_Pin|BTN_2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : LED_RED_0_Pin LED_RED_1_Pin LED_YELLOW_0_Pin DUR_4_Pin

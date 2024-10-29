@@ -13,6 +13,7 @@
 
 #define NORMAL_STATE SET
 #define PRESSED_STATE RESET
+#define N0_OF_BUTTONS 10
 
 extern int button_flag[10];
 

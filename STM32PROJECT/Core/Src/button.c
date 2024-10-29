@@ -6,15 +6,15 @@
  */
 #include "button.h"
 
-int KeyReg0[10] = {NORMAL_STATE};
-int KeyReg1[10] = {NORMAL_STATE};
-int KeyReg2[10] = {NORMAL_STATE};
-int KeyReg3[10] = {NORMAL_STATE};
+int KeyReg0[N0_OF_BUTTONS] = {NORMAL_STATE};
+int KeyReg1[N0_OF_BUTTONS] = {NORMAL_STATE};
+int KeyReg2[N0_OF_BUTTONS] = {NORMAL_STATE};
+int KeyReg3[N0_OF_BUTTONS] = {NORMAL_STATE};
 
 int TimeOutForKeyPress = 500;
-int button1_pressed[10] = {0};
-int button1_long_pressed[10] = {0};
-int button1_flag[10] = {0};
+int button1_pressed[N0_OF_BUTTONS] = {0};
+int button1_long_pressed[N0_OF_BUTTONS] = {0};
+int button1_flag[N0_OF_BUTTONS] = {0};
 
 int isButton1Pressed(uint8_t index){
 	if(button1_flag[index] == 1)
@@ -32,7 +32,7 @@ void subKeyProcess(){
 	HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
 }
 void getKeyInput(){
-	for(int i = 0; i < 10; i++){
+	for(int i = 0; i < N0_OF_BUTTONS; i++){
 		KeyReg2[i] = KeyReg1[i];
 		KeyReg1[i] = KeyReg0[i];
 	}

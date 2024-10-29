@@ -68,6 +68,10 @@ void Error_Handler(void);
 #define SETMODE_3_GPIO_Port GPIOA
 #define LED_RED_Pin GPIO_PIN_5
 #define LED_RED_GPIO_Port GPIOA
+#define BTN_0_Pin GPIO_PIN_6
+#define BTN_0_GPIO_Port GPIOA
+#define BTN_1_Pin GPIO_PIN_7
+#define BTN_1_GPIO_Port GPIOA
 #define LED_RED_0_Pin GPIO_PIN_0
 #define LED_RED_0_GPIO_Port GPIOB
 #define LED_RED_1_Pin GPIO_PIN_1
@@ -82,6 +86,8 @@ void Error_Handler(void);
 #define DUR_6_GPIO_Port GPIOB
 #define DUR_7_Pin GPIO_PIN_13
 #define DUR_7_GPIO_Port GPIOB
+#define BTN_2_Pin GPIO_PIN_8
+#define BTN_2_GPIO_Port GPIOA
 #define SETMODE_4_Pin GPIO_PIN_10
 #define SETMODE_4_GPIO_Port GPIOA
 #define SETMODE_5_Pin GPIO_PIN_11
