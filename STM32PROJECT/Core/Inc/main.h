@@ -66,6 +66,8 @@ void Error_Handler(void);
 #define SETMODE_2_GPIO_Port GPIOA
 #define SETMODE_3_Pin GPIO_PIN_4
 #define SETMODE_3_GPIO_Port GPIOA
+#define LED_RED_Pin GPIO_PIN_5
+#define LED_RED_GPIO_Port GPIOA
 #define LED_RED_0_Pin GPIO_PIN_0
 #define LED_RED_0_GPIO_Port GPIOB
 #define LED_RED_1_Pin GPIO_PIN_1
