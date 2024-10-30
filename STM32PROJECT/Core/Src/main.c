@@ -99,7 +99,10 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+	  if(button_flag[0] == 1){
+		  subKeyProcess();
+		  button_flag[0] = 0;
+	  }
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

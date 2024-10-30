@@ -36,8 +36,8 @@ void getKeyInput(){
 		KeyReg2[i] = KeyReg1[i];
 		KeyReg1[i] = KeyReg0[i];
 	}
-	KeyReg0[0] = HAL_GPIO_ReadPin(SETMODE_0_GPIO_Port, SETMODE_0_Pin);
-	for(int i = 0; i < 10; i++){
+	KeyReg0[0] = HAL_GPIO_ReadPin(BTN_0_GPIO_Port, BTN_0_Pin);
+	for(int i = 0; i < N0_OF_BUTTONS; i++){
 		if((KeyReg1[i] == KeyReg0[i]) && (KeyReg2[i] == KeyReg1[i])){
 			if(KeyReg2[i] != KeyReg3[i]){
 				KeyReg3[i] = KeyReg2[i];
