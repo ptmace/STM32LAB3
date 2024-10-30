@@ -13,10 +13,13 @@
 
 #define NORMAL_STATE SET
 #define PRESSED_STATE RESET
-#define N0_OF_BUTTONS 10
+#define N0_OF_BUTTONS 3
 
-extern int button_flag[10];
+extern int button_flag[N0_OF_BUTTONS];
 
+int isButtonPressed(uint8_t index);
+int isButtonLongPressed(uint8_t index);
+void subKeyProcess();
 void getKeyInput();
 
 #endif /* INC_BUTTON_H_ */
