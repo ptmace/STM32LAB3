@@ -13,7 +13,7 @@
 #define MODE_3	3	//MODIFY LED_YELLOW
 #define MODE_4	4	//MODIFY LED_GREEN
 
-extern int mode;
 extern int status;
+extern int mode;
 
 #endif /* INC_GLOBAL_H_ */

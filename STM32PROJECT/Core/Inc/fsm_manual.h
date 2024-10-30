@@ -8,11 +8,14 @@
 #ifndef INC_FSM_MANUAL_H_
 #define INC_FSM_MANUAL_H_
 
+#include "main.h"
 #include "button.h"
 #include "global.h"
+#include "traffic_light.h"
+#include "software_timer.h"
 
-int prev_state[N0_OF_BUTTONS] = {NORMAL_STATE};
-int state[N0_OF_BUTTONS] = {NORMAL_STATE};
+extern int prev_state[N0_OF_BUTTONS];
+extern int state[N0_OF_BUTTONS];
 
 void fsm_for_input_processing();
 

@@ -10,6 +10,7 @@
 
 
 #include "main.h"
+#include "global.h"
 
 #define NORMAL_STATE SET
 #define PRESSED_STATE RESET
@@ -17,8 +18,8 @@
 
 extern int button_flag[N0_OF_BUTTONS];
 
-int isButtonPressed(uint8_t index);
-int isButtonLongPressed(uint8_t index);
+int isButtonPressed(int index);
+int isButtonLongPressed(int index);
 void subKeyProcess();
 void getKeyInput();
 

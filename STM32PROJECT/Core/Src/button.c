@@ -12,17 +12,16 @@ int KeyReg2[N0_OF_BUTTONS] = {NORMAL_STATE};
 int KeyReg3[N0_OF_BUTTONS] = {NORMAL_STATE};
 
 int TimeOutForKeyPress = 500;
-int button_pressed[N0_OF_BUTTONS] = {0};
-int button_long_pressed[N0_OF_BUTTONS] = {0};
 int button_flag[N0_OF_BUTTONS] = {0};
+int button_long_pressed[N0_OF_BUTTONS] = {0};
 
-int isButtonPressed(uint8_t index){
+int isButtonPressed(int index){
 	if(button_flag[index] == 1)
 		return 1;
 	return 0;
 }
 
-int isButtonLongPressed(uint8_t index){
+int isButtonLongPressed(int index){
 	if(button_long_pressed[index] == 1)
 		return 1;
 	return 0;
