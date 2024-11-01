@@ -13,6 +13,7 @@
 #include "global.h"
 #include "traffic_light.h"
 #include "software_timer.h"
+#include "led7_segment.h"
 
 extern int prev_state[N0_OF_BUTTONS];
 extern int state[N0_OF_BUTTONS];

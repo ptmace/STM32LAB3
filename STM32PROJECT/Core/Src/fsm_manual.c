@@ -12,43 +12,47 @@ int prev_state[N0_OF_BUTTONS] = {NORMAL_STATE};
 int state[N0_OF_BUTTONS] = {NORMAL_STATE};
 
 void fsm_for_input_processing(){
-	for(int i = 0; i < N0_OF_BUTTONS; i++){
-		if(isButtonPressed(i)){
-			prev_state[i] = state[i];
-			state[i] = PRESSED_STATE;
+	if(button_flag[0] == 1){
+		switch(mode){
+			case MODE_1:
+				if(isButtonPressed(0)){
+					clearAllLed();
+					mode = MODE_2;
+					subKeyProcess();
+				}
+				break;
+			case MODE_2:
+				if(isButtonPressed(0)){
+					clearAllLed();
+					mode = MODE_3;
+					subKeyProcess();
+				}
+				break;
+			case MODE_3:
+				if(isButtonPressed(0)){
+					clearAllLed();
+					mode = MODE_4;
+					subKeyProcess();
+				}
+				break;
+			case MODE_4:
+				if(isButtonPressed(0)){
+					clearAllLed();
+					mode = MODE_1;
+					subKeyProcess();
+				}
+				break;
+			default: break;
 		}
-		else{
-			prev_state[i] = state[i];
-			state[i] = NORMAL_STATE;
-		}
+
+		button_flag[0] = 0;
+		timer_flag[0] = 1;
 	}
 
-	switch(mode){
-		case MODE_1:
-			if(state[0] == PRESSED_STATE && prev_state[0] == NORMAL_STATE){
-				clearAllLed();
-				mode = MODE_2;
-			}
-			break;
-		case MODE_2:
-			if(state[0] == PRESSED_STATE && prev_state[0] == NORMAL_STATE){
-				clearAllLed();
-				mode = MODE_3;
-			}
-			break;
-		case MODE_3:
-			if(state[0] == PRESSED_STATE && prev_state[0] == NORMAL_STATE){
-				clearAllLed();
-				mode = MODE_4;
-			}
-			break;
-		case MODE_4:
-			if(state[0] == PRESSED_STATE && prev_state[0] == NORMAL_STATE){
-				clearAllLed();
-				mode = MODE_1;
-			}
-			break;
-		default: break;
+	if(timer_flag[0]){
+		blinkingLed(mode);
+		setTimer(0, 10);
 	}
+	displayLED7SEG(mode, 0);
 }
 

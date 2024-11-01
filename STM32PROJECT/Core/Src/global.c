@@ -6,4 +6,4 @@
  */
 #include "global.h"
 
-int mode;
+int mode = MODE_1;

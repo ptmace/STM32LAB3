@@ -21,5 +21,5 @@ void led_red();
 void led_yellow();
 void led_green();
 void init_traffic_light();
-
+void run_traffic_light();
 #endif /* INC_TRAFFIC_LIGHT_H_ */

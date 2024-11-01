@@ -98,23 +98,16 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer(0, 50);
+  //setTimer(0, 50);
 //  setTimer(1, 300);
 //  setTimer(2, 200);
-  init_traffic_light();
+	init_traffic_light();
   while (1)
   {
     /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */
-	  fsm_for_input_processing();
-	  if(button_flag[0] == 1){
-		  subKeyProcess();
-		  button_flag[0] = 0;
-	  }
-	  if(timer_flag[0]){
-		  blinkingLed(mode);
-		  setTimer(0, 50);
-	  }
+	fsm_for_input_processing();
+
   }
   /* USER CODE END 3 */
 }
