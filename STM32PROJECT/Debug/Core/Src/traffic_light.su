@@ -1,7 +1,8 @@
-traffic_light.c:13:6:clearAllLed	8	static
-traffic_light.c:23:6:blinkingLed	16	static
-traffic_light.c:43:6:led_red	8	static
-traffic_light.c:47:6:led_yellow	8	static
-traffic_light.c:51:6:led_green	8	static
-traffic_light.c:55:6:init_traffic_light	8	static
-traffic_light.c:68:6:run_traffic_light	8	static
+traffic_light.c:11:6:clearAllLed	8	static
+traffic_light.c:21:6:led_red_green	8	static
+traffic_light.c:25:6:led_red_amber	8	static
+traffic_light.c:29:6:led_green_red	8	static
+traffic_light.c:33:6:led_amber_red	8	static
+traffic_light.c:37:6:init_traffic_light	8	static
+traffic_light.c:44:6:controlTime_led	4	static
+traffic_light.c:52:6:blinkingLed	16	static

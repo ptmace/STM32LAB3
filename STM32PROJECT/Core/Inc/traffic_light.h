@@ -11,15 +11,16 @@
 #include "main.h"
 #include "global.h"
 #include "software_timer.h"
-#include "fsm_manual.h"
+#include "fsm_automatic.h"
 
 
 void clearAllLed();
-void blinkingLed(int mode);
-void traffic_light_mode_0();
-void led_red();
-void led_yellow();
-void led_green();
+void led_red_green();
+void led_red_amber();
+void led_green_red();
+void led_amber_red();
+void controlTime_led();
 void init_traffic_light();
-void run_traffic_light();
+void blinkingLed(int mode);
+
 #endif /* INC_TRAFFIC_LIGHT_H_ */

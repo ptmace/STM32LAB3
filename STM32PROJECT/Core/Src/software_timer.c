@@ -6,8 +6,8 @@
  */
 #include "software_timer.h"
 
-int timer_flag[MAXTM];
-int timer_counter[MAXTM];
+int timer_flag[MAXTM] = {0};
+int timer_counter[MAXTM]= {0};
 
 void setTimer(int index, int counter){
 	timer_flag[index] = 0;

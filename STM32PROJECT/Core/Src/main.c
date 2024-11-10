@@ -22,10 +22,11 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "fsm_manual.h"
+#include "fsm_setting.h"
+#include "fsm_automatic.h"
 #include "software_timer.h"
 #include "button.h"
-#include "traffic_light.h"
-#include "fsm_manual.h"
 #include "global.h"
 /* USER CODE END Includes */
 
@@ -98,16 +99,13 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  //setTimer(0, 50);
-//  setTimer(1, 300);
-//  setTimer(2, 200);
-	init_traffic_light();
   while (1)
   {
     /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */
-	fsm_for_input_processing();
-
+	  fsm_manual();
+	  fsm_automatic();
+	  fsm_setting();
   }
   /* USER CODE END 3 */
 }
@@ -250,10 +248,8 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
+	getKeyInput();
 	timerRun();
-	if(htim->Instance == TIM2){
-		getKeyInput();
-	}
 }
 /* USER CODE END 4 */
 

@@ -7,8 +7,6 @@
 
 #include "traffic_light.h"
 
-int mode;
-int counter = 0;
 
 void clearAllLed(){
 	HAL_GPIO_WritePin(LED_RED_0_GPIO_Port, LED_RED_0_Pin, RESET);
@@ -20,11 +18,39 @@ void clearAllLed(){
 	HAL_GPIO_WritePin(LED_GREEN_1_GPIO_Port, LED_GREEN_1_Pin, RESET);
 	HAL_GPIO_WritePin(LED_GREEN_0_GPIO_Port, LED_GREEN_0_Pin, RESET);
 }
+void led_red_green(){
+	HAL_GPIO_WritePin(LED_RED_0_GPIO_Port, LED_RED_0_Pin, SET);
+	HAL_GPIO_WritePin(LED_GREEN_1_GPIO_Port, LED_GREEN_1_Pin, SET);
+}
+void led_red_amber(){
+	HAL_GPIO_WritePin(LED_RED_0_GPIO_Port, LED_RED_0_Pin, SET);
+	HAL_GPIO_WritePin(LED_YELLOW_1_GPIO_Port, LED_YELLOW_1_Pin, SET);
+}
+void led_green_red(){
+	HAL_GPIO_WritePin(LED_RED_1_GPIO_Port, LED_RED_1_Pin, SET);
+	HAL_GPIO_WritePin(LED_GREEN_0_GPIO_Port, LED_GREEN_0_Pin, SET);
+}
+void led_amber_red(){
+	HAL_GPIO_WritePin(LED_RED_1_GPIO_Port, LED_RED_1_Pin, SET);
+	HAL_GPIO_WritePin(LED_YELLOW_0_GPIO_Port, LED_YELLOW_0_Pin, SET);
+}
+void init_traffic_light(){
+	setTimer(1, 100);
+
+	clearAllLed();
+	led_red_green();
+	led_red_amber();
+}
+void controlTime_led(){
+	if(red <= 0)
+		red = temp_red;
+	if(green <= 0)
+		green = temp_green;
+	if(amber <= 0)
+		amber = temp_amber;
+}
 void blinkingLed(int mode){
 	switch(mode){
-		case MODE_1:
-			run_traffic_light();
-			break;
 		case MODE_2:
 			HAL_GPIO_TogglePin(LED_RED_0_GPIO_Port, LED_RED_0_Pin);
 			HAL_GPIO_TogglePin(LED_RED_1_GPIO_Port, LED_RED_1_Pin);
@@ -38,74 +64,5 @@ void blinkingLed(int mode){
 			HAL_GPIO_TogglePin(LED_GREEN_1_GPIO_Port, LED_GREEN_1_Pin);
 			break;
 		default: break;
-	}
-}
-void led_red(){
-	HAL_GPIO_TogglePin(LED_RED_0_GPIO_Port, LED_RED_0_Pin);
-	HAL_GPIO_TogglePin(LED_RED_1_GPIO_Port, LED_RED_1_Pin);
-}
-void led_yellow(){
-	HAL_GPIO_TogglePin(LED_YELLOW_0_GPIO_Port, LED_YELLOW_0_Pin);
-	HAL_GPIO_TogglePin(LED_YELLOW_1_GPIO_Port, LED_YELLOW_1_Pin);
-}
-void led_green(){
-	HAL_GPIO_TogglePin(LED_GREEN_0_GPIO_Port, LED_GREEN_0_Pin);
-	HAL_GPIO_TogglePin(LED_GREEN_1_GPIO_Port, LED_GREEN_1_Pin);
-}
-void init_traffic_light(){
-	setTimer(1, 100);
-
-	clearAllLed();
-	HAL_GPIO_WritePin(LED_RED_0_GPIO_Port, LED_RED_0_Pin, SET);
-	HAL_GPIO_WritePin(LED_RED_1_GPIO_Port, LED_RED_1_Pin, RESET);
-
-	HAL_GPIO_WritePin(LED_YELLOW_0_GPIO_Port, LED_YELLOW_0_Pin, RESET);
-	HAL_GPIO_WritePin(LED_YELLOW_1_GPIO_Port, LED_YELLOW_1_Pin, RESET);
-
-	HAL_GPIO_WritePin(LED_GREEN_0_GPIO_Port, LED_GREEN_0_Pin, RESET);
-	HAL_GPIO_WritePin(LED_GREEN_1_GPIO_Port, LED_GREEN_1_Pin, SET);
-}
-void run_traffic_light(){
-	if(timer_flag[1]){
-		counter++;
-		if(counter == 4){
-			clearAllLed();
-			HAL_GPIO_WritePin(LED_RED_0_GPIO_Port, LED_RED_0_Pin, SET);
-			HAL_GPIO_WritePin(LED_RED_1_GPIO_Port, LED_RED_1_Pin, RESET);
-
-			HAL_GPIO_WritePin(LED_YELLOW_0_GPIO_Port, LED_YELLOW_0_Pin, RESET);
-			HAL_GPIO_WritePin(LED_YELLOW_1_GPIO_Port, LED_YELLOW_1_Pin, SET);
-
-			HAL_GPIO_WritePin(LED_GREEN_0_GPIO_Port, LED_GREEN_0_Pin, RESET);
-			HAL_GPIO_WritePin(LED_GREEN_1_GPIO_Port, LED_GREEN_1_Pin, RESET);
-
-		}
-		else if(counter == 6){
-			clearAllLed();
-			HAL_GPIO_WritePin(LED_RED_0_GPIO_Port, LED_RED_0_Pin, RESET);
-			HAL_GPIO_WritePin(LED_RED_1_GPIO_Port, LED_RED_1_Pin, SET);
-
-			HAL_GPIO_WritePin(LED_YELLOW_0_GPIO_Port, LED_YELLOW_0_Pin, RESET);
-			HAL_GPIO_WritePin(LED_YELLOW_1_GPIO_Port, LED_YELLOW_1_Pin, RESET);
-
-			HAL_GPIO_WritePin(LED_GREEN_0_GPIO_Port, LED_GREEN_0_Pin, SET);
-			HAL_GPIO_WritePin(LED_GREEN_1_GPIO_Port, LED_GREEN_1_Pin, RESET);
-		}
-		else if(counter == 9){
-			clearAllLed();
-			HAL_GPIO_WritePin(LED_RED_0_GPIO_Port, LED_RED_0_Pin, RESET);
-			HAL_GPIO_WritePin(LED_RED_1_GPIO_Port, LED_RED_1_Pin, SET);
-
-			HAL_GPIO_WritePin(LED_YELLOW_0_GPIO_Port, LED_YELLOW_0_Pin, SET);
-			HAL_GPIO_WritePin(LED_YELLOW_1_GPIO_Port, LED_YELLOW_1_Pin, RESET);
-
-			HAL_GPIO_WritePin(LED_GREEN_0_GPIO_Port, LED_GREEN_0_Pin, RESET);
-			HAL_GPIO_WritePin(LED_GREEN_1_GPIO_Port, LED_GREEN_1_Pin, RESET);
-		}
-		else if(counter == 11){
-			init_traffic_light();
-			counter = 0;
-		}
-		setTimer(1, 100);
 	}
 }
