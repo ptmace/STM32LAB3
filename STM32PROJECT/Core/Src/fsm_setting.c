@@ -35,11 +35,10 @@ void fsm_setting(){
 			if(isButtonPressed(2)){
 				button_flag[2] = 0;
 				if(adj_red > 2){
-					green = ((amber < adj_red) ? (adj_red - amber) : green);
-					amber = ((green < adj_red) ? (adj_red - green) : amber);
+					amber = ((temp_green < adj_red) ? (adj_red - temp_green) : temp_amber);
 
 					if(green + amber < 100){
-						adj_red = green + amber;
+						green = adj_red - amber;
 						red = adj_red;
 
 						temp_red = red;
@@ -60,6 +59,7 @@ void fsm_setting(){
 					amber = max_amber;
 					green = max_green;
 				}
+				clearAllLed();
 				status = RED_GREEN;
 				setTimer(1, green*100);
 				setTimer(0, 1);
@@ -86,10 +86,11 @@ void fsm_setting(){
 			}
 			if(isButtonPressed(2)){
 				button_flag[2] = 0;
-				green = ((adj_amber < red) ? (red - adj_amber) : green);
+				green = ((adj_amber < temp_red) ? (temp_red - adj_amber) : temp_green);
 
-				if(green + adj_amber < 100){
-					red = adj_green + adj_amber;
+
+				if((green + adj_amber) < 100){
+					red = green + adj_amber;
 					amber = adj_amber;
 					temp_red = red;
 					temp_amber = amber;
@@ -103,7 +104,7 @@ void fsm_setting(){
 					temp_amber = amber;
 					temp_green = green;
 				}
-
+				clearAllLed();
 				status = RED_GREEN;
 				setTimer(1, green*100);
 				setTimer(0, 1);
@@ -130,10 +131,10 @@ void fsm_setting(){
 			}
 			if(isButtonPressed(2)){
 				button_flag[2] = 0;
-				amber = ((adj_green < red) ? (red - adj_green) : amber);
+				amber = ((adj_green < temp_red) ? (temp_red - adj_green) : temp_amber);
 
 				if(adj_green + amber < 100){
-					red = adj_green + adj_amber;
+					red = adj_green + amber;
 					green = adj_green;
 					temp_red = red;
 					temp_amber = amber;
@@ -147,7 +148,7 @@ void fsm_setting(){
 					temp_amber = amber;
 					temp_green = green;
 				}
-
+				clearAllLed();
 				status = RED_GREEN;
 				setTimer(1, green*100);
 				setTimer(0, 1);
