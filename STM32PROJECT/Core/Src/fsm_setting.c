@@ -34,7 +34,7 @@ void fsm_setting(){
 			}
 			if(isButtonPressed(2)){
 				button_flag[2] = 0;
-				if(adj_red > 2){
+				if(adj_red > 2 && adj_red < 98){
 					amber = ((temp_green < adj_red) ? (adj_red - temp_green) : temp_amber);
 
 					if(green + amber < 100){
