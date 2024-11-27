@@ -13,6 +13,11 @@ void fsm_manual(){
 			led_red_green();
 			if(timer_flag[1]){
 				status = RED_GREEN;
+				clearAllLed();
+				red = temp_red;
+				green = temp_green;
+				amber = temp_amber;
+				setTimer(1, green*100);
 			}
 			if(isButtonPressed(1)){
 				status = MAN_RED_AMBER;
@@ -42,6 +47,11 @@ void fsm_manual(){
 			led_red_amber();
 			if(timer_flag[1]){
 				status = RED_GREEN;
+				clearAllLed();
+				red = temp_red;
+				green = temp_green;
+				amber = temp_amber;
+				setTimer(1, green*100);
 			}
 			if(timer_flag[0]){
 				displayLED7SEG(red, 0);
@@ -80,6 +90,11 @@ void fsm_manual(){
 			}
 			if(timer_flag[1]){
 				status = RED_GREEN;
+				clearAllLed();
+				red = temp_red;
+				green = temp_green;
+				amber = temp_amber;
+				setTimer(1, green*100);
 			}
 			if(isButtonPressed(1)){
 				status = MAN_AMBER_RED;
@@ -100,6 +115,11 @@ void fsm_manual(){
 			led_amber_red();
 			if(timer_flag[1]){
 				status = RED_GREEN;
+				clearAllLed();
+				red = temp_red;
+				green = temp_green;
+				amber = temp_amber;
+				setTimer(1, green*100);
 			}
 			if(timer_flag[0]){
 				displayLED7SEG(amber, 0);
