@@ -12,7 +12,7 @@ void fsm_manual(){
 		case MAN_RED_GREEN:
 			led_red_green();
 			if(timer_flag[1]){
-				status = INIT;
+				status = RED_GREEN;
 			}
 			if(isButtonPressed(1)){
 				status = MAN_RED_AMBER;
@@ -41,7 +41,7 @@ void fsm_manual(){
 		case MAN_RED_AMBER:
 			led_red_amber();
 			if(timer_flag[1]){
-				status = INIT;
+				status = RED_GREEN;
 			}
 			if(timer_flag[0]){
 				displayLED7SEG(red, 0);
@@ -79,7 +79,7 @@ void fsm_manual(){
 				setTimer(0, 100);
 			}
 			if(timer_flag[1]){
-				status = INIT;
+				status = RED_GREEN;
 			}
 			if(isButtonPressed(1)){
 				status = MAN_AMBER_RED;
@@ -99,7 +99,7 @@ void fsm_manual(){
 		case MAN_AMBER_RED:
 			led_amber_red();
 			if(timer_flag[1]){
-				status = INIT;
+				status = RED_GREEN;
 			}
 			if(timer_flag[0]){
 				displayLED7SEG(amber, 0);
