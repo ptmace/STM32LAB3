@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include "software_timer.h"
 #include "button.h"
+#include "fsm_setting.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -101,6 +102,7 @@ int main(void)
     /* USER CODE END WHILE */
 	  if(button_flag[0] == 1){
 		  subKeyProcess();
+		  fsm_setting();
 		  button_flag[0] = 0;
 	  }
     /* USER CODE BEGIN 3 */
